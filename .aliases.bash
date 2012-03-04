@@ -4,6 +4,12 @@
 # License WTFPL
 # Special thanks to Cameron Hayne (http://hayne.net)
 
+# Update this script :)
+selfupdate ()
+{
+    wget -O ~/.aliases.bash https://raw.github.com/jacquesbh/aliases.bash/master/.aliases.bash
+}
+
 # List Directory Content
 # ====================================================
 export LS_ARGS='-Gh'
@@ -115,6 +121,6 @@ alias ..='cd ..'
 
 
 # If you need some scripts, use the ~/.dedicated.bash for it :)
-if [[ -f ~/dedicated.bash ]]; then
-    source ~/dedicated.bash
+if [[ -f ~/.dedicated.bash ]]; then
+    source ~/.dedicated.bash
 fi
