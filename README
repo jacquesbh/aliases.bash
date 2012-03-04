@@ -1,0 +1,9 @@
+1/ Copy the .aliases.bash file in your Home directory.
+
+2/ Execute this command :
+echo 'source ~/.aliases.bash' >> ~/.bash_login
+
+3/ If you need some aliases, use the ~/.dedicated.bash file.
+
+Note:
+For few mysql functions you need to set the .my.cnf first :)
