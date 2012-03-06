@@ -109,6 +109,9 @@ grepfind () { find . -type f -name "$2" -print0 | xargs -0 grep "$1" ; }
 # I often can't recall what I named this alias, so make it work either way: 
 alias findgrep='grepfind'
 
+# Grep with colors !
+alias grep='grep --color'
+
 # Finder
 # ====================================================
 # rm_DS_Store_files: removes all .DS_Store file from the current dir and below
