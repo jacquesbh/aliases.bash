@@ -8,6 +8,7 @@
 selfupdate ()
 {
     wget -O ~/.aliases.bash https://raw.github.com/jacquesbh/aliases.bash/master/.aliases.bash
+    source ~/.aliases.bash
 }
 
 # List Directory Content
