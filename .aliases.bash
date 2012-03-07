@@ -30,7 +30,14 @@ alias desk='cd ~/Desktop/'
 http_headers () { /usr/bin/curl -I -L $@ ; }
 
 # Simple "memory" script
-alias memory='cat ~/Desktop/memory.txt 2> /dev/null ; cat >> ~/Desktop/memory.txt'
+memory () {
+    if [[ $1 == '' ]]; then
+        file='memory'
+    else
+        file=$1
+    fi
+    cat ~/Desktop/$file.txt 2> /dev/null ; cat >> ~/Desktop/$file.txt
+}
 
 # Alias for tail -f
 tf () { clear; tail -f $@ ; }
