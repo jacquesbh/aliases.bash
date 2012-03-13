@@ -97,7 +97,7 @@ getmage ()
 {
     # Usage example for http://connect20.magentocommerce.com/community/Fooman_Speedster-2.0.8 :
     # getmage community Fooman_Speedster 2.0.8
-    wget --directory-prefix=~/Downloads/ http://connect20.magentocommerce.com/$1/$2/$3/$2-$3.tgz
+    wget --directory-prefix=$HOME/Downloads/ http://connect20.magentocommerce.com/$1/$2/$3/$2-$3.tgz
 }
 
 # Text handling
