@@ -5,7 +5,7 @@
 # Special thanks to Cameron Hayne (http://hayne.net)
 
 # Update this script :)
-selfupdate ()
+function selfupdate()
 {
     wget -O ~/.aliases.bash https://raw.github.com/jacquesbh/aliases.bash/master/.aliases.bash
     source ~/.aliases.bash
@@ -15,10 +15,10 @@ selfupdate ()
 # ====================================================
 export LS_ARGS='-Gh'
 alias ls='ls $LS_ARGS'
-l () { /bin/ls $LS_ARGS -1 "$@"; }
-ll () { /bin/ls $LS_ARGS -lO "$@"; }
-lll () { /bin/ls $LS_ARGS -lOe "$@"; }
-lla () { /bin/ls $LS_ARGS -lOa "$@"; }
+function l() { /bin/ls $LS_ARGS -1 "$@"; }
+function ll() { /bin/ls $LS_ARGS -lO "$@"; }
+function lll() { /bin/ls $LS_ARGS -lOe "$@"; }
+function lla() { /bin/ls $LS_ARGS -lOa "$@"; }
 
 # Directories
 # ====================================================
@@ -28,10 +28,10 @@ alias desk='cd ~/Desktop/'
 # Development
 # ====================================================
 # http_headers: get just the HTTP headers from a web page (and its redirects)
-http_headers () { /usr/bin/curl -I -L $@ ; }
+function http_headers() { /usr/bin/curl -I -L $@ ; }
 
 # Simple "memory" script
-memory () {
+function memory() {
     if [[ $1 == '' ]]; then
         file='memory'
     else
@@ -41,10 +41,10 @@ memory () {
 }
 
 # Alias for tail -f
-tf () { clear; tail -f $@ ; }
+function tf() { clear; tail -f $@ ; }
 
 # Mysql dump in .gz on Desktop
-dump ()
+function dump()
 {
     if [[ $# = 0 ]]; then
         echo "Usage: dump base [tables...]"
@@ -70,7 +70,7 @@ dump ()
 }
 
 # Restore a database
-restore ()
+function restore()
 {
     if [[ $# < 2 ]]; then
         echo "Usage: restore database file.sql.gz"
@@ -87,13 +87,13 @@ restore ()
 }
 
 # Git
-pp () { git pull && git push; }
+function pp() { git pull && git push; }
 
 # Development - MAGENTO
 # ====================================================
 
 # Retrieve magento extension from Magento Connect 2.0
-getmage ()
+function getmage()
 {
     # Usage example for http://connect20.magentocommerce.com/community/Fooman_Speedster-2.0.8 :
     # getmage community Fooman_Speedster 2.0.8
@@ -103,17 +103,17 @@ getmage ()
 # Text handling
 # ====================================================
 # enquote: surround lines with quotes (useful in pipes) - from mervTormel
-enquote () { /usr/bin/sed 's/^/"/;s/$/"/' ; }
+function enquote() { /usr/bin/sed 's/^/"/;s/$/"/' ; }
 
 # cat_pdfs: concatenate PDF files
 # e.g. cat_pdfs -o combined.pdf file1.pdf file2.pdf file3.pdf
-cat_pdfs () { python '/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py' "$@" ; }
+function cat_pdfs() { python '/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py' "$@" ; }
 
 # Searching
 # ====================================================
 # grepfind: to grep through files found by find, e.g. grepf pattern '*.c'
 # note that 'grep -r pattern dir_name' is an alternative if want all files 
-grepfind () { find . -type f -name "$2" -print0 | xargs -0 grep "$1" ; }
+function grepfind() { find . -type f -name "$2" -print0 | xargs -0 grep "$1" ; }
 # I often can't recall what I named this alias, so make it work either way: 
 alias findgrep='grepfind'
 
