@@ -20,6 +20,10 @@ function ll() { /bin/ls $LS_ARGS -lO "$@"; }
 function lll() { /bin/ls $LS_ARGS -lOe "$@"; }
 function lla() { /bin/ls $LS_ARGS -lOa "$@"; }
 
+# Manipulations
+# ====================================================
+alias mkdir='mkdir -p'
+
 # Directories
 # ====================================================
 alias dl='cd ~/Downloads/'
