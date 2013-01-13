@@ -117,7 +117,7 @@ function cat_pdfs() { python '/System/Library/Automator/Combine PDF Pages.action
 # ====================================================
 # grepfind: to grep through files found by find, e.g. grepf pattern '*.c'
 # note that 'grep -r pattern dir_name' is an alternative if want all files 
-function grepfind() { find $1 -type f -print0 | xargs -0 grep "$2" ; }
+function grepfind() { find . -type f -name "$2" -print0 | xargs -0 grep "$1" ; }
 # I often can't recall what I named this alias, so make it work either way: 
 alias findgrep='grepfind'
 
