@@ -24,6 +24,10 @@ function lla() { /bin/ls $LS_ARGS -lOa "$@"; }
 # ====================================================
 alias mkdir='mkdir -p'
 
+# Compression
+# ====================================================
+alias tar='gnutar'
+
 # Directories
 # ====================================================
 alias dl='cd ~/Downloads/'
