@@ -32,6 +32,7 @@ alias tar='gnutar'
 # ====================================================
 alias dl='cd ~/Downloads/'
 alias desk='cd ~/Desktop/'
+alias docs='cd ~/Documents/'
 
 # Development
 # ====================================================
