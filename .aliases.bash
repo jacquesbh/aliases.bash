@@ -109,6 +109,22 @@ function getmage()
     wget --directory-prefix=$HOME/Downloads/ http://connect20.magentocommerce.com/$1/$2/$3/$2-$3.tgz
 }
 
+# Servers
+# ====================================================
+function server ()
+{
+    if [[ $# < 1 ]]; then
+        echo 'Usage: server <server alias> [new]'
+        return 64
+    fi
+
+    if [[ "$2" == "new" ]]; then
+        ssh -t $1 screen -S jack
+    else
+        ssh -t $1 screen -r jack
+    fi
+}
+
 # Text handling
 # ====================================================
 # enquote: surround lines with quotes (useful in pipes) - from mervTormel
