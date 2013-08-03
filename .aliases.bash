@@ -120,6 +120,8 @@ function server ()
 
     if [[ "$2" == "new" ]]; then
         ssh -t $1 screen -S jack
+    elif [[ "$2" == "-d" ]]; then
+        ssh -t $1 screen -dr jack
     else
         ssh -t $1 screen -r jack
     fi
