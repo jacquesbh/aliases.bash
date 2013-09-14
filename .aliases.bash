@@ -98,11 +98,6 @@ function restore()
 # Vagrant
 alias v='vagrant'
 
-# Ipfw
-alias forward80='sudo ipfw add 100 fwd 127.0.0.1,8080 tcp from any to me 80'
-alias forward443='sudo ipfw add 100 fwd 127.0.0.1,8443 tcp from any to me 443'
-alias forward3306='sudo ipfw add 100 fwd 127.0.0.1,3307 tcp from any to me 3306'
-
 # Git
 function pp() { git pull && git push; }
 
@@ -165,6 +160,12 @@ alias treel='tree -L 1'
 alias ...='cd ../..'
 alias ..='cd ..'
 
+# System
+# ====================================================
+alias ipfw='sudo ipfw'
+alias forward80='sudo /sbin/ipfw add 100 fwd 127.0.0.1,8080 tcp from any to me 80'
+alias forward443='sudo /sbin/ipfw add 100 fwd 127.0.0.1,8443 tcp from any to me 443'
+alias forward3306='sudo /sbin/ipfw add 100 fwd 127.0.0.1,3307 tcp from any to me 3306'
 
 # If you need some scripts, use the ~/.dedicated.bash for it :)
 if [[ -f ~/.dedicated.bash ]]; then
