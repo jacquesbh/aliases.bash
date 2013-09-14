@@ -33,6 +33,8 @@ alias tar='gnutar'
 alias dl='cd ~/Downloads/'
 alias desk='cd ~/Desktop/'
 alias docs='cd ~/Documents/'
+alias prez='cd ~/Presentations/'
+alias drive='cd ~/Google\ Drive/'
 
 # Development
 # ====================================================
