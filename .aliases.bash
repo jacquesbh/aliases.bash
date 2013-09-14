@@ -159,8 +159,10 @@ alias rm_DS_Store_files='find . -name .DS_Store -exec rm {} \;'
 
 alias o='open .'
 alias treel='tree -L 1'
-alias ...='cd ../..'
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 # System
 # ====================================================
