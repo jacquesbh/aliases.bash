@@ -112,9 +112,10 @@ export -f restore
 
 # Vagrant
 alias v='vagrant'
-
-# Git
-function pp() { git pull && git push; }
+function vscreen ()
+{
+    vagrant ssh -- -t screen $@
+}
 
 # Development - MAGENTO
 # ====================================================
