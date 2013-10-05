@@ -52,7 +52,7 @@ export -f http_headers
 
 # Simple "memory" script
 function memory() {
-    if [[ $1 == '' ]]; then
+    if [ $1 == '' ]; then
         file='memory'
     else
         file=$1
@@ -68,7 +68,7 @@ export -f tf
 # Mysql dump in .gz on Desktop
 function dump()
 {
-    if [[ $# = 0 ]]; then
+    if [ $# = 0 ]; then
         echo "Usage: dump base [tables...]"
         return 65
     fi
@@ -76,14 +76,14 @@ function dump()
     shift
     tables=''
     for name in $@; do
-        if [[ $tables != '' ]]; then
+        if [ $tables != '' ]; then
             tables=${tables}-$name
         else
             tables=$name
         fi
     done
     datetime=`date "+%Y-%m-%d_%H%M"`
-    if [[ $tables != '' ]]; then
+    if [ $tables != '' ]; then
         filename=${db}_${datetime}_${tables}.sql.gz
     else
         filename=${db}_${datetime}.sql.gz
@@ -95,12 +95,12 @@ export -f dump
 # Restore a database
 function restore()
 {
-    if [[ $# < 2 ]]; then
+    if [ $# < 2 ]; then
         echo "Usage: restore database file.sql.gz"
         return 65
     fi
 
-    if [[ -f $2 ]]; then
+    if [ -f $2 ]; then
         mysqladmin -f drop $1
         mysqladmin create $1
         gunzip -c $2 | mysql $1
@@ -133,14 +133,14 @@ export -f getmage
 # ====================================================
 function server ()
 {
-    if [[ $# < 1 ]]; then
+    if [ $# < 1 ]; then
         echo 'Usage: server <server alias> [new]'
         return 64
     fi
 
-    if [[ "$2" == "new" ]]; then
+    if [ "$2" == "new" ]; then
         ssh -t $1 screen -S jack
-    elif [[ "$2" == "-d" ]]; then
+    elif [ "$2" == "-d" ]; then
         ssh -t $1 screen -dr jack
     else
         ssh -t $1 screen -r jack
@@ -192,6 +192,6 @@ alias forward443='sudo /sbin/ipfw add 100 fwd 127.0.0.1,8443 tcp from any to me 
 alias forward3306='sudo /sbin/ipfw add 100 fwd 127.0.0.1,3307 tcp from any to me 3306'
 
 # If you need some scripts, use the ~/.dedicated.bash for it :)
-if [[ -f ~/.dedicated.bash ]]; then
+if [ -f ~/.dedicated.bash ]; then
     source ~/.dedicated.bash
 fi
