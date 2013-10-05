@@ -10,15 +10,23 @@ function selfupdate()
     wget -O ~/.aliases.bash https://raw.github.com/jacquesbh/aliases.bash/master/.aliases.bash
     source ~/.aliases.bash
 }
+export -f selfupdate
 
 # List Directory Content
 # ====================================================
 export LS_ARGS='-Gh'
 alias ls='ls $LS_ARGS'
 function l() { /bin/ls $LS_ARGS -1 "$@"; }
+export -f l
+
 function ll() { /bin/ls $LS_ARGS -lO "$@"; }
+export -f ll
+
 function lll() { /bin/ls $LS_ARGS -lOe "$@"; }
+export -f lll
+
 function lla() { /bin/ls $LS_ARGS -lOa "$@"; }
+export -f lla
 
 # Manipulations
 # ====================================================
@@ -40,6 +48,7 @@ alias drive='cd ~/Google\ Drive/'
 # ====================================================
 # http_headers: get just the HTTP headers from a web page (and its redirects)
 function http_headers() { /usr/bin/curl -I -L $@ ; }
+export -f http_headers
 
 # Simple "memory" script
 function memory() {
@@ -50,9 +59,11 @@ function memory() {
     fi
     cat ~/Desktop/$file.txt 2> /dev/null ; cat >> ~/Desktop/$file.txt
 }
+export -f memory
 
 # Alias for tail -f
 function tf() { clear; tail -f $@ ; }
+export -f tf
 
 # Mysql dump in .gz on Desktop
 function dump()
@@ -79,6 +90,7 @@ function dump()
     fi
     mysqldump $db $@ | gzip > ~/Desktop/$filename
 }
+export -f dump
 
 # Restore a database
 function restore()
@@ -96,6 +108,7 @@ function restore()
         echo "File not found."
     fi
 }
+export -f restore
 
 # Vagrant
 alias v='vagrant'
@@ -113,6 +126,7 @@ function getmage()
     # getmage community Fooman_Speedster 2.0.8
     wget --directory-prefix=$HOME/Downloads/ http://connect20.magentocommerce.com/$1/$2/$3/$2-$3.tgz
 }
+export -f getmage
 
 # Servers
 # ====================================================
@@ -131,21 +145,26 @@ function server ()
         ssh -t $1 screen -r jack
     fi
 }
+export -f server
 
 # Text handling
 # ====================================================
 # enquote: surround lines with quotes (useful in pipes) - from mervTormel
 function enquote() { /usr/bin/sed 's/^/"/;s/$/"/' ; }
+export -f enquote
 
 # cat_pdfs: concatenate PDF files
 # e.g. cat_pdfs -o combined.pdf file1.pdf file2.pdf file3.pdf
 function cat_pdfs() { python '/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py' "$@" ; }
+export -f cat_pdfs
 
 # Searching
 # ====================================================
 # grepfind: to grep through files found by find, e.g. grepf pattern '*.c'
 # note that 'grep -r pattern dir_name' is an alternative if want all files 
 function grepfind() { find . -type f -name "$2" -print0 | xargs -0 grep "$1" ; }
+export -f grepfind
+
 # I often can't recall what I named this alias, so make it work either way: 
 alias findgrep='grepfind'
 
