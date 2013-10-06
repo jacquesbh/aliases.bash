@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # My bash aliases
 # Author: Jacques Bodin-Hullin
 # Github : jacquesbh/aliases.bash
@@ -52,7 +53,7 @@ export -f http_headers
 
 # Simple "memory" script
 function memory() {
-    if [ $1 == '' ]; then
+    if [ $1 = '' ]; then
         file='memory'
     else
         file=$1
@@ -95,7 +96,7 @@ export -f dump
 # Restore a database
 function restore()
 {
-    if [ $# < 2 ]; then
+    if [ $# -lt 2 ]; then
         echo "Usage: restore database file.sql.gz"
         return 65
     fi
@@ -133,14 +134,14 @@ export -f getmage
 # ====================================================
 function server ()
 {
-    if [ $# < 1 ]; then
+    if [ $# -lt 1 ]; then
         echo 'Usage: server <server alias> [new]'
         return 64
     fi
 
-    if [ "$2" == "new" ]; then
+    if [ "$2" = "new" ]; then
         ssh -t $1 screen -S jack
-    elif [ "$2" == "-d" ]; then
+    elif [ "$2" = "-d" ]; then
         ssh -t $1 screen -dr jack
     else
         ssh -t $1 screen -r jack
