@@ -45,6 +45,22 @@ alias docs='cd ~/Documents/'
 alias prez='cd ~/Presentations/'
 alias drive='cd ~/Google\ Drive/'
 
+# Projects
+# ====================================================
+function site ()
+{
+    cd ~/Sites
+    if [[ $# > 0 ]]; then
+        cd $@
+    fi
+}
+export -f site
+
+if [ "$SHELL" = "/bin/zsh" ]; then
+    _site () { _files -W ~/Sites; }
+    compdef _site site
+fi
+
 # Development
 # ====================================================
 # http_headers: get just the HTTP headers from a web page (and its redirects)
