@@ -61,6 +61,16 @@ if [ "$SHELL" = "/bin/zsh" ]; then
     compdef _site site
 fi
 
+# Video
+# ====================================================
+# Convert .mov (QuickTime videos) to .mp4
+function mov2mp4 ()
+{
+    base=`basename $1 .mov`
+    ffmpeg -i $1 $base.mp4
+}
+export -f mov2mp4
+
 # Development
 # ====================================================
 # http_headers: get just the HTTP headers from a web page (and its redirects)
