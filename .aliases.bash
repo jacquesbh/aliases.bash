@@ -33,9 +33,15 @@ export -f lla
 # ====================================================
 alias mkdir='mkdir -p'
 
+# Typos
+# ====================================================
+alias cim='vim'
+alias vp='cp'
+alias cd..='cd ..'
+
 # Compression
 # ====================================================
-alias tar='gnutar'
+#alias tar='gnutar'
 
 # Directories
 # ====================================================
@@ -139,10 +145,17 @@ export -f restore
 
 # Vagrant
 alias v='vagrant'
+function vmux ()
+{
+    vagrant ssh -- -A -t tmux $@
+}
 function vscreen ()
 {
     vagrant ssh -- -t screen $@
 }
+
+# VMWare
+alias vmrun="/Applications/VMware\ Fusion.app/Contents/Library/vmrun"
 
 # Development - MAGENTO
 # ====================================================
@@ -161,16 +174,19 @@ export -f getmage
 function server ()
 {
     if [ $# -lt 1 ]; then
-        echo 'Usage: server <server alias> [new]'
+        echo 'Usage: server <server alias> [new|tmux args]'
         return 64
     fi
 
-    if [ "$2" = "new" ]; then
-        ssh -t $1 screen -S jack
-    elif [ "$2" = "-d" ]; then
-        ssh -t $1 screen -dr jack
+    server=$1
+    shift
+
+    if [ "$1" = "new" ]; then
+        ssh -t $server tmux new-session -s "$server"
+    elif [ ! "$1" ]; then
+        ssh -t $server tmux attach -t "$server"
     else
-        ssh -t $1 screen -r jack
+        ssh -t $server tmux $@
     fi
 }
 export -f server
@@ -205,6 +221,7 @@ alias grep='grep --color'
 alias rm_DS_Store_files='find . -name .DS_Store -exec rm {} \;'
 
 alias o='open .'
+alias tree='tree -C'
 alias treel='tree -L 1'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -217,6 +234,18 @@ alias ipfw='sudo ipfw'
 alias forward80='sudo /sbin/ipfw add 100 fwd 127.0.0.1,8080 tcp from any to me 80'
 alias forward443='sudo /sbin/ipfw add 100 fwd 127.0.0.1,8443 tcp from any to me 443'
 alias forward3306='sudo /sbin/ipfw add 100 fwd 127.0.0.1,3307 tcp from any to me 3306'
+
+# Ping
+# ====================================================
+alias pg='ping google.com'
+
+# Git
+# ====================================================
+alias g='git'
+alias gs='git status'
+alias cdr='cd "$(git rev-parse --show-toplevel)"'
+alias gr='cd "$(git rev-parse --show-toplevel)"'
+alias feat='git flow feature'
 
 # If you need some scripts, use the ~/.dedicated.bash for it :)
 if [ -f ~/.dedicated.bash ]; then
